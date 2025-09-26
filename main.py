@@ -397,13 +397,13 @@ def game_loop(snake_speed, speed_change):
 
         head = [snake_x, snake_y]
         snake_list.append(head)
+        
         if len(snake_list) > snake_len:
             del snake_list[0]
 
-        for segment in snake_list[:-1]:
-            if segment == head:
-                game_over()
-                return
+        if head in snake_list[:-1]:
+            game_over()
+            return
 
         border_buffer = 10
         if (
