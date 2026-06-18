@@ -1,4 +1,5 @@
 # Snakes With Swarnava
+---
 
 A classic Snake game built using Python and Pygame.
 
@@ -14,4 +15,6 @@ A classic Snake game built using Python and Pygame.
 - Pygame
 
 ## Note
-This is one of my early learning projects and is archived for portfolio history.
+This is one of my early Python game-development projects, preserved as part of my learning journey and portfolio history.
+
+---
