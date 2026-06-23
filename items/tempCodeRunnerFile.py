@@ -1,1 +1,0 @@
-ale(intro_screen, (WIDTH, HEIGHT))

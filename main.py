@@ -26,29 +26,37 @@ current_difficulty = "medium"
 # Fonts
 score_font = pygame.font.SysFont("comicsansms", 25)
 buttons_font = pygame.font.SysFont("Roboto", 25)
-gameover_button_font = pygame.font.Font(r"font/PressStart2P-Regular.ttf", 14)
+gameover_button_font = pygame.font.Font(
+    r"C:/Users/HP/Documents/Codes/Projects/Python/SnakesWthSwarnava/assets/font/PressStart2P-Regular.ttf", 14)
 
 # Load images
-intro_screen = pygame.image.load(r"images/intro_screen.jpg")
+intro_screen = pygame.image.load(
+    r"C:/Users/HP/Documents/Codes/Projects/Python/SnakesWthSwarnava/assets/images/intro_screen.jpg")
 intro_screen = pygame.transform.scale(intro_screen, (WIDTH, HEIGHT))
 
-settings_screen = pygame.image.load(r"images/settings_screen.jpg")
+settings_screen = pygame.image.load(
+    r"C:/Users/HP/Documents/Codes/Projects/Python/SnakesWthSwarnava/assets/images/settings_screen.jpg")
 settings_screen = pygame.transform.scale(settings_screen, (WIDTH, HEIGHT))
 
-background = pygame.image.load(r"images/background.jpg")
+background = pygame.image.load(
+    r"C:/Users/HP/Documents/Codes/Projects/Python/SnakesWthSwarnava/assets/images/background.jpg")
 background = pygame.transform.scale(background, (WIDTH, HEIGHT))
 
-snake_img = pygame.image.load(r"images/snake.png")
+snake_img = pygame.image.load(
+    r"C:/Users/HP/Documents/Codes/Projects/Python/SnakesWthSwarnava/assets/images/snake.png")
 snake_img = pygame.transform.scale(snake_img, (snake_size, snake_size))
 
-apple_img = pygame.image.load(r"images/apple.png")
+apple_img = pygame.image.load(
+    r"C:/Users/HP/Documents/Codes/Projects/Python/SnakesWthSwarnava/assets/images/apple.png")
 apple_img = pygame.transform.scale(apple_img, (apple_size, apple_size))
 
-gameover_screen = pygame.image.load(r"images/gameover_screen.png")
+gameover_screen = pygame.image.load(
+    r"C:/Users/HP/Documents/Codes/Projects/Python/SnakesWthSwarnava/assets/images/gameover_screen.png")
 gameover_screen = pygame.transform.scale(gameover_screen, (500, 300))
 
-hiscore_screen = pygame.image.load(r"images/hiscore_screen.webp")
-hiscore_screen = pygame.transform.scale(hiscore_screen, (500, 300))
+highscor_screen = pygame.image.load(
+    r"C:/Users/HP/Documents/Codes/Projects/Python/SnakesWthSwarnava/assets/images/highscore_screen.webp")
+highscor_screen = pygame.transform.scale(highscor_screen, (500, 300))
 
 # Game window
 game_window = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -57,12 +65,18 @@ clock = pygame.time.Clock()
 
 
 # Load sound
-gamestart_sound = pygame.mixer.Sound(r"soundeffects/gamestart.mp3")
-gameover_sound = pygame.mixer.Sound(r"soundeffects/gameover.mp3")
-intro_sound = pygame.mixer.Sound(r"soundeffects/backgroundsound.mp3")
-hiscore_sound = pygame.mixer.Sound(r"soundeffects/hiscore.mp3")
-apple_eating_sound = pygame.mixer.Sound(r"soundeffects/apple_eating_sound.wav")
-joy_sound = pygame.mixer.Sound(r"soundeffects/joy.mp3")
+gamestart_sound = pygame.mixer.Sound(
+    r"C:/Users/HP/Documents/Codes/Projects/Python/SnakesWthSwarnava/assets/soundeffects/gamestart.mp3")
+gameover_sound = pygame.mixer.Sound(
+    r"C:/Users/HP/Documents/Codes/Projects/Python/SnakesWthSwarnava/assets/soundeffects/gameover.mp3")
+intro_sound = pygame.mixer.Sound(
+    r"C:/Users/HP/Documents/Codes/Projects/Python/SnakesWthSwarnava/assets/soundeffects/backgroundsound.mp3")
+highscor_sound = pygame.mixer.Sound(
+    r"C:/Users/HP/Documents/Codes/Projects/Python/SnakesWthSwarnava/assets/soundeffects/highscore.mp3")
+apple_eating_sound = pygame.mixer.Sound(
+    r"C:/Users/HP/Documents/Codes/Projects/Python/SnakesWthSwarnava/assets/soundeffects/apple_eating_sound.wav")
+joy_sound = pygame.mixer.Sound(
+    r"C:/Users/HP/Documents/Codes/Projects/Python/SnakesWthSwarnava/assets/soundeffects/joy.mp3")
 
 
 def create_button(text, x, y, width, height, inactive_color, active_color, action=None):
@@ -70,15 +84,18 @@ def create_button(text, x, y, width, height, inactive_color, active_color, actio
     mouse = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
 
-    pygame.draw.rect(game_window, shadow_color, (x + shadow_offset, y + shadow_offset, width, height), border_radius=8)
+    pygame.draw.rect(game_window, shadow_color, (x + shadow_offset,
+                     y + shadow_offset, width, height), border_radius=8)
 
     if x + width > mouse[0] > x and y + height > mouse[1] > y:
-        pygame.draw.rect(game_window, active_color, (x, y, width, height), border_radius=8)
+        pygame.draw.rect(game_window, active_color,
+                         (x, y, width, height), border_radius=8)
         if click[0] == 1 and action:
             pygame.time.delay(150)  # to prevent multiple calls
             action()
     else:
-        pygame.draw.rect(game_window, inactive_color, (x, y, width, height), border_radius=8)
+        pygame.draw.rect(game_window, inactive_color,
+                         (x, y, width, height), border_radius=8)
 
     button_text = buttons_font.render(text, True, text_color)
     text_rect = button_text.get_rect(center=(x + width // 2, y + height // 2))
@@ -160,9 +177,12 @@ def load_intro():
     while intro_active:
         game_window.blit(intro_screen, (0, 0))
 
-        create_button("Play", 94, 250, 412, 30, button_color, hover_color, lambda: game_loop(snake_speed, speed_change))
-        create_button("Settings", 94, 300, 412, 30, button_color, hover_color, load_settings)
-        create_button("Quit", 94, 350, 412, 30, button_color, hover_color, quit_game)
+        create_button("Play", 94, 250, 412, 30, button_color,
+                      hover_color, lambda: game_loop(snake_speed, speed_change))
+        create_button("Settings", 94, 300, 412, 30,
+                      button_color, hover_color, load_settings)
+        create_button("Quit", 94, 350, 412, 30,
+                      button_color, hover_color, quit_game)
 
         pygame.display.update()
         clock.tick(FPS)
@@ -188,12 +208,16 @@ def load_settings():
         create_label("Select Difficulty", WIDTH // 2, 100)
 
         # Difficulty Buttons
-        create_button("Easy", 94, 150, 412, 30, button_color, hover_color, easy)
-        create_button("Medium", 94, 200, 412, 30, button_color, hover_color, medium)
-        create_button("Hard", 94, 250, 412, 30, button_color, hover_color, hard)
+        create_button("Easy", 94, 150, 412, 30,
+                      button_color, hover_color, easy)
+        create_button("Medium", 94, 200, 412, 30,
+                      button_color, hover_color, medium)
+        create_button("Hard", 94, 250, 412, 30,
+                      button_color, hover_color, hard)
 
         # Volume Slider (at y = 350)
-        knob_x = draw_slider(150, 350, 300, 0, 100, master_volume, label="Volume")
+        knob_x = draw_slider(150, 350, 300, 0, 100,
+                             master_volume, label="Volume")
 
         # Update volume only if it changed
         if master_volume != previous_volume:
@@ -205,8 +229,10 @@ def load_settings():
             previous_volume = master_volume
 
         # Navigation Buttons
-        create_button("Back", 10, 355, 60, 30, button_color, hover_color, load_intro)
-        create_button("Quit", 525, 355, 60, 30, button_color, hover_color, quit_game)
+        create_button("Back", 10, 355, 60, 30,
+                      button_color, hover_color, load_intro)
+        create_button("Quit", 525, 355, 60, 30,
+                      button_color, hover_color, quit_game)
 
         pygame.display.update()
         clock.tick(FPS)
@@ -244,7 +270,6 @@ def load_settings():
                     if 150 <= mx <= 450 and 350 <= my <= 368:
                         master_volume = max(
                             0, min(100, ((mx - 150) / 300) * 100))
-
 
             pygame.display.update()
 
@@ -296,14 +321,14 @@ def game_over():
         quit_game()
 
 
-def hiscore_load():
+def highscor_load():
     gameover_sound.set_volume(0.5)
-    hiscore_sound.play()
+    highscor_sound.play()
     over = True
     next_action = None
 
     while over:
-        game_window.blit(hiscore_screen, (50, 50))
+        game_window.blit(highscor_screen, (50, 50))
 
         def play_again():
             nonlocal over, next_action
@@ -329,10 +354,10 @@ def hiscore_load():
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                hiscore_sound.stop()
+                highscor_sound.stop()
                 quit_game()
 
-    hiscore_sound.stop()
+    highscor_sound.stop()
 
     # Now handle the selected action
     if next_action == "play":
@@ -391,13 +416,12 @@ def game_loop(snake_speed, speed_change):
                     score += 5
                     snake_len += 5
 
-
         snake_x += velocity_x
         snake_y += velocity_y
 
         head = [snake_x, snake_y]
         snake_list.append(head)
-        
+
         if len(snake_list) > snake_len:
             del snake_list[0]
 
@@ -414,7 +438,7 @@ def game_loop(snake_speed, speed_change):
         ):
             game_over()
             return
-        
+
         if abs(snake_x - apple_x) < 17 and abs(snake_y - apple_y) < 17:
             apple_eating_sound.play()
             score += 5
@@ -423,25 +447,25 @@ def game_loop(snake_speed, speed_change):
             apple_x = random.randint(0, WIDTH - apple_size)
             apple_y = random.randint(0, HEIGHT - apple_size)
 
-
         game_window.blit(background, (0, 0))
         game_window.blit(apple_img, (apple_x, apple_y))
 
         for x, y in snake_list:
             game_window.blit(snake_img, (x, y))
 
-        with open("hiscore.txt", "r") as f:
-            hiscore = f.read()
+        with open("C:/Users/HP/Documents/Codes/Projects/Python/SnakesWthSwarnava/data/highscore.txt", "r") as f:
+             highscore = f.read()
 
-        if hiscore == "":
-            hiscore = 0
-        if int(score) > int(hiscore):
+        if  highscore == "":
+             highscore = 0
+        if int(score) > int( highscore):
             joy_sound.play()
-            hiscore = score
-            with open("hiscore.txt", "w") as f:
-                f.write(str(hiscore))
+            highscore = score
+            with open(" highscor.txt", "w") as f:
+                f.write(str( highscore))
 
-        text2 = score_font.render("High Score: " + str(int(hiscore)), True, black)
+        text2 = score_font.render(
+            "High Score: " + str(int( highscore)), True, black)
         game_window.blit(text2, [200, 5])
 
         text1 = score_font.render("Score: " + str(int(score)), True, black)
