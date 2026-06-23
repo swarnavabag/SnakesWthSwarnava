@@ -40,14 +40,13 @@ Through this project, I explored and implemented:
 
 ```bash
 snake-game/
-│── assets/
-│── sounds/
-│── main.py
-│── highscore.txt
-│── README.md
+│
+├── assets/          # Game images, sounds, sprites
+├── main.py          # Main game loop and logic
+├── highscore.txt    # Stores highest score
+└── README.md        # Project documentation
 ```
 
----
 
 ## Why This Project Matters
 
