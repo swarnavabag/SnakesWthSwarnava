@@ -43,7 +43,7 @@ snake-game/
 │
 ├── assets/          # Game images, sounds, sprites
 ├── main.py          # Main game loop and logic
-├── highscore.txt    # Stores highest score
+├── data             # Stores highest score
 └── README.md        # Project documentation
 ```
 
